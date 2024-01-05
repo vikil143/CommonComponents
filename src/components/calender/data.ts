@@ -1,0 +1,37 @@
+type ApiDatesType = {
+  [date: string]: string;
+};
+
+export const apiDates: ApiDatesType = {
+  '01-01-2023': 'totalDays',
+  '02-01-2023': 'presentDays',
+  '03-01-2023': 'leaveDays',
+  '04-01-2023': 'absent',
+  '05-01-2023': 'presentDays',
+  '06-01-2023': 'presentDays',
+  '07-01-2023': 'presentDays',
+  '08-01-2023': 'absent',
+  '09-01-2023': 'presentDays',
+  '10-01-2023': 'presentDays',
+  '11-01-2023': 'leaveDays',
+  '12-01-2023': 'presentDays',
+  '13-01-2023': 'leaveDays',
+  '14-01-2023': 'absent',
+  '15-01-2023': 'leaveDays',
+  '16-01-2023': 'totalDays',
+  '17-01-2023': 'leaveDays',
+  '18-01-2023': 'presentDays',
+  '19-01-2023': 'presentDays',
+  '20-01-2023': 'presentDays',
+  '21-01-2023': 'leaveDays',
+  '22-01-2023': 'leaveDays',
+  '23-01-2023': 'leaveDays',
+  '24-01-2023': 'leaveDays',
+  '25-01-2023': 'presentDays',
+  '26-01-2023': 'presentDays',
+  '27-01-2023': 'presentDays',
+  '28-01-2023': 'presentDays',
+  '29-01-2023': 'totalDays',
+  '30-01-2023': 'presentDays',
+  '31-01-2023': 'absent',
+};
