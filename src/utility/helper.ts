@@ -6,9 +6,28 @@ import {
   Dimensions,
   PixelRatio,
 } from 'react-native';
+import {
+  ImageLibraryOptions,
+  launchImageLibrary,
+} from 'react-native-image-picker';
 // import {openInbox} from 'react-native-email-link';
 
 const {width, height} = Dimensions.get('window');
+
+interface ImageOptions extends ImageLibraryOptions {}
+
+export const pickImageFromGallery = async (o: Partial<ImageOptions>) => {
+  try {
+    const options: ImageLibraryOptions = {
+      ...o,
+      mediaType: 'photo',
+    };
+    const image = await launchImageLibrary(options);
+    return image;
+  } catch (error) {
+    throw error;
+  }
+};
 
 export function formatDateDDMMYYYY(date: Date) {
   var year = date.getFullYear();

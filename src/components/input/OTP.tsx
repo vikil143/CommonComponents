@@ -8,18 +8,18 @@ const NO_OF_OTP = 4;
 
 interface OTPProps {
   pin: string;
-  setPin?: (text: string) => void;
+  setPin: (text: string) => void;
   hasError?: boolean;
 }
 
-function OTP({pin, hasError}: OTPProps) {
+function OTP({pin, hasError, setPin}: OTPProps) {
   const handleChangePin = (text: string) => {
     if (isNaN(Number(text))) {
       return false;
     }
 
     if (text.length < 5) {
-      //   setPin(text);
+      setPin(text);
     }
   };
 
@@ -33,8 +33,7 @@ function OTP({pin, hasError}: OTPProps) {
               {
                 borderColor: hasError ? Colors.red : Colors.white,
               },
-            ]}
-            key={ind}>
+            ]}>
             <Text style={[styles.pinColor]}>
               {ind < pin.length ? pin[ind] : ''}
             </Text>

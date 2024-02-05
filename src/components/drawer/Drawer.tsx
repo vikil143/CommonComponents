@@ -4,8 +4,9 @@ import {
   TouchableWithoutFeedback,
   ViewStyle,
   StatusBar,
+  ViewProps,
 } from 'react-native';
-import React from 'react';
+import React, {ReactElement} from 'react';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -18,7 +19,7 @@ import {SCREEN_WIDTH} from '../../utility/constants';
 import {useBackHandler} from '../../hooks/useBackHandler';
 import {Colors} from '../../utility/Colors';
 
-interface DrawerProps extends HasChild {
+interface DrawerProps extends ViewProps {
   show: boolean;
   hide: () => void;
   onModalHide?: () => void;
@@ -33,6 +34,8 @@ function Drawer({
   children,
   onModalHide,
   drawerStyle,
+  style,
+  ...props
 }: DrawerProps) {
   const duration = 300;
   const slideAnimation = useDerivedValue(() => {
@@ -118,7 +121,7 @@ function Drawer({
             drawerStyle,
             animDrawerStyles,
           ]}>
-          {React.cloneElement(children, {
+          {React.cloneElement(children as ReactElement, {
             show,
             hide,
             onModalHide,

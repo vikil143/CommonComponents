@@ -1,4 +1,4 @@
-import {ReactElement} from 'react';
+import {JSXElementConstructor, ReactElement} from 'react';
 import {
   ViewStyle as RNViewStyle,
   ImageStyle as RNImageStyle,
@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 interface HasChild {
-  children: ReactElement;
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
 }
 
 interface ViewStyles {

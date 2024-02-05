@@ -1,16 +1,18 @@
-import {TouchableWithoutFeedback} from 'react-native';
+import {
+  TouchableWithoutFeedback,
+  View,
+  TouchableWithoutFeedbackProps,
+} from 'react-native';
 import React from 'react';
 import {HasChild, OnPress} from '../../types';
 
-interface WrapperProps extends HasChild, OnPress {}
+interface WrapperProps extends TouchableWithoutFeedbackProps {}
 
 export default function WrapperWithoutFeedback({
   children,
-  onPress,
+  ...props
 }: WrapperProps) {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      {children}
-    </TouchableWithoutFeedback>
+    <TouchableWithoutFeedback {...props}>{children}</TouchableWithoutFeedback>
   );
 }

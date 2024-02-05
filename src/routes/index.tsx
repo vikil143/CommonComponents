@@ -11,7 +11,7 @@ const Stack = createStackNavigator<HomeNavigator>();
 export default function Navigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Dashboard" component={DashboardScreens} />
       </Stack.Navigator>

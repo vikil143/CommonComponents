@@ -1,20 +1,8 @@
-import {Pressable} from 'react-native';
+import {Pressable, PressableProps} from 'react-native';
 import React from 'react';
-import {ContainerViewStyles, HasChild, OnPress} from '../../types';
 
-interface WrapperProps
-  extends HasChild,
-    OnPress,
-    Partial<ContainerViewStyles> {}
+interface WrapperProps extends PressableProps {}
 
-export default function Wrapper({
-  children,
-  onPress,
-  containerStyle,
-}: WrapperProps) {
-  return (
-    <Pressable style={[containerStyle]} onPress={onPress}>
-      {children}
-    </Pressable>
-  );
+export default function Wrapper({children, ...props}: WrapperProps) {
+  return <Pressable {...props}>{children}</Pressable>;
 }

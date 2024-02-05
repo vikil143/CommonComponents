@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Image} from 'react-native';
 import React, {useState} from 'react';
 import {useToast} from '../../hooks/useToast';
 import Button from '../../components/button/Button';
@@ -17,12 +17,27 @@ import {BottomSheet} from '../../components/bottomsheet';
 import Switch from '../../components/input/Switch';
 import OTP from '../../components/input/OTP';
 import {HorizontalLine} from '../../components/line';
+import Modal from '../../components/modal/modal';
+import {pickImageFromGallery} from '../../utility/helper';
 
 export default function HomeScreen() {
   const [modalCust, setModalCust] = useState(false);
   const [sheet, setSheet] = useState(false);
+  const [editImageModal, setEditImageModal] = useState(false);
+  const [image, setImage] = useState('');
 
   const showToast = useToast();
+
+  const handleImagePicker = async () => {
+    try {
+      const rImage = await pickImageFromGallery({});
+      setImage(rImage.assets![0]!.uri!);
+      setEditImageModal(true);
+    } catch (error) {
+      console.log('Error image', error);
+    }
+  };
+
   return (
     <View style={[commonStyles.flexOne]}>
       <Drawer
@@ -38,6 +53,17 @@ export default function HomeScreen() {
           <Text>Sheet</Text>
         </View>
       </BottomSheet>
+      <Modal
+        containerStyle={{justifyContent: 'center'}}
+        show={editImageModal}
+        hide={() => setEditImageModal(false)}>
+        <View style={[]}>
+          <Image
+            source={{uri: image}}
+            style={{width: SCREEN_WIDTH, height: SCREEN_WIDTH}}
+          />
+        </View>
+      </Modal>
       {/* <BottomSheet show={sheet} hide={() => setSheet(false)}>
         <View style={{height: 400}}>
           <Text>Sheet</Text>
@@ -63,6 +89,10 @@ export default function HomeScreen() {
             text="Show Sheet"
             textStyle={{color: '#000'}}
             onPress={() => setSheet(true)}></Button>
+          <Button
+            text="Show Edit Image"
+            textStyle={{color: '#000'}}
+            onPress={handleImagePicker}></Button>
           <Radio onPress={() => {}} selected />
           <Spacing />
           <RadioInCircle selected onPress={() => {}} />
@@ -85,7 +115,7 @@ export default function HomeScreen() {
           <Spacing />
           <HorizontalLine />
           <Spacing />
-          <OTP pin="" />
+          <OTP pin="" setPin={() => {}} />
           <Spacing />
         </View>
       </ScrollView>
