@@ -29,6 +29,8 @@ export const pickImageFromGallery = async (o: Partial<ImageOptions>) => {
   }
 };
 
+export const reverseNumber = (no: number) => no - no * 2;
+
 export function formatDateDDMMYYYY(date: Date) {
   var year = date.getFullYear();
 

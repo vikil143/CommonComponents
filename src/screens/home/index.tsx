@@ -19,6 +19,7 @@ import OTP from '../../components/input/OTP';
 import {HorizontalLine} from '../../components/line';
 import Modal from '../../components/modal/modal';
 import {pickImageFromGallery} from '../../utility/helper';
+import Clock from '../../components/clock/clock.main';
 
 export default function HomeScreen() {
   const [modalCust, setModalCust] = useState(false);
@@ -71,6 +72,9 @@ export default function HomeScreen() {
       </BottomSheet> */}
       <ScrollView>
         <View>
+          <View>
+            <Clock />
+          </View>
           <View>
             <UpArrow />
             <DownArrow />
